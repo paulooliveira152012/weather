@@ -7,3 +7,24 @@ Welcome to the Wheather Dashboard application! This application utilizesn HTML a
 
 * Search the State in the drop down bar or by searching it up in the input box.
 * Select the desired state to check the forecast
+
+# Contributers
+
+* Paulo Oliveira
+
+# Links and preview
+![Finished and deployed website project]()
+
+![GitHub-repository]()
+
+
+
+HTML Screen-shot
+![HTML ScreenShot]()
+
+CSS Screen-shot
+![CSS ScreenShot]()
+
+Website Screen-shot
+![WebsiteScreenshot]()
+
