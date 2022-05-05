@@ -14,7 +14,7 @@
     <main>
         <aside>
             <h2>Search for a City:</h2>
-            <input type="text" name="" id="">
+            <input type="text" name="" id="searchInput">
             <button id="searchBtn">Search</button>
             <hr>
             <!--cities will be saved after search and be displayed hever-->
@@ -24,16 +24,19 @@
         </aside>
         <div class="container">
             <!--current wheather information for searched city will be displayed here at the top-->
-            <div class="top"></div>
+            <div class="top">
+                <h3 id="cityName">Minas Gerais</h3>
+                <h4 id="date">05/05/22</h4>
+                <h5 id="temp"></h5>
+                <h5 id="hum"></h5>
+                <h5 id="wind"></h5>
+                <h5 id="uvi"></h5>
+            </div>
             <!--5-Day Forcast displayed at the bottom div-->
             <div class="fiveDay">
                 <h2>5-day Forcast:</h2>
                 <div class="cardsContainer">
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
+                    
                 </div>
             </div>
         </div>
