@@ -50,7 +50,7 @@ aside input {
     margin: 10px;
 }
 
-.cardsContainer {
+#cardsContainer {
     display: flex;
 }
 
@@ -59,4 +59,21 @@ aside input {
     width: 20%;
     background-color: #33485C;
     margin: 8px;
+}
+
+.test {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+}
+
+.fiveDay {
+    background-color: white;
+}
+
+.fiveDayContainers {
+    width: 20%;
+    height: 200px;
+    background-color: blue;
+    margin: 5px;
 }

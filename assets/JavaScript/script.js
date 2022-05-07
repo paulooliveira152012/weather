@@ -4,10 +4,21 @@
 var button = document.querySelector("#searchBtn")
 //reference to the search input
 var input = document.querySelector("#searchInput")
+//reference to the h3 at top container
+var title = document.querySelector("#cityName")
+//reference to fiveDay container
+var fiveDay = document.querySelector("#fiveDay")
+//reference to cards container
+var cardsContainer = document.querySelector("#cardsContainer")
 
 button.addEventListener("click", function(event){
     event.preventDefault()
     convertCityName(input.value)
+    //check if city name result is ok, if so, populate h3 with city name
+        //populating h3 value
+        title.innerHTML = input.value
+        //call five day forcast to populate bottom container
+        fiveDayForecast()
 })
 
 //http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
@@ -45,6 +56,64 @@ var getWheather = function(lat, lon) {
         })
     })
 }
+
+// fiveDayForecast function which will populate bottom container
+function fiveDayForecast() {
+// create element
+var el = document.createElement('div')
+// add classes to element
+el.classList.add('fiveDayContainers')
+//add content to element ---->>>> UPDATE TO NEXT DAYS [0]
+el.textContent = input.value
+//add element to DOM
+cardsContainer.appendChild(el)
+
+    // create element
+    var el = document.createElement('div')
+    // add classes to element
+    el.classList.add('fiveDayContainers')
+    //add content to element UPDATE TO NEXT DAYS [1]
+    el.textContent = input.value
+    //add element to DOM
+    cardsContainer.appendChild(el)
+
+// create element
+var el = document.createElement('div')
+// add classes to element
+el.classList.add('fiveDayContainers')
+//add content to element UPDATE TO NEXT DAYS [2]
+el.textContent = input.value
+//add element to DOM
+cardsContainer.appendChild(el)
+
+    // create element
+    var el = document.createElement('div')
+    // add classes to element
+    el.classList.add('fiveDayContainers')
+    //add content to element UPDATE TO NEXT DAYS [3]
+    el.textContent = input.value
+    //add element to DOM
+    cardsContainer.appendChild(el)
+
+// create element
+var el = document.createElement('div')
+// add classes to element
+el.classList.add('fiveDayContainers')
+//add content to element UPDATE TO NEXT DAYS [4]
+el.textContent = input.value
+//add element to DOM
+cardsContainer.appendChild(el)
+}
+ 
+
+
+
+
+
+
+
+
+
 
 
 
