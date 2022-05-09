@@ -21,7 +21,9 @@ button.addEventListener("click", function(event){
         fiveDayForecast()
 })
 
-//http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
+/* ----------------------------------------------------------- */
+// CONVERTING LAT AND LON VALUES TO NAME
+
 function convertCityName(cityName) {
     var apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=07bc796881be5c58857101bc6401fe30`
     fetch(apiUrl)
@@ -32,9 +34,10 @@ function convertCityName(cityName) {
         })
     })
 }
+/* ----------------------------------------------------------- */
+// GETTING THE DATA FOR THAT CITY
 
-//https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-
+// creating variables referencing to the elements where information will be displayed
 var temp = document.querySelector("#temp");
 var hum = document.querySelector("#hum");
 var wind = document.querySelector("#wind")
@@ -56,6 +59,20 @@ var getWheather = function(lat, lon) {
         })
     })
 }
+
+/* ----------------------------------------------------------- */
+// CONVERTING LAT AND LON VALUES TO NAME FOR 5 DAY CALL
+
+
+/* ----------------------------------------------------------- */
+
+/* ----------------------------------------------------------- */
+// CONVERTING LAT AND LON VALUES TO NAME FOR 5 DAY CALL
+
+
+/* ----------------------------------------------------------- */
+
+
 
 // fiveDayForecast function which will populate bottom container
 function fiveDayForecast() {
@@ -104,37 +121,10 @@ el.textContent = input.value
 //add element to DOM
 cardsContainer.appendChild(el)
 }
- 
 
 
+http://api.openweathermap.org/geo/1.0/direct?q=newark&limit=1&appid=07bc796881be5c58857101bc6401fe30
 
+http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
-
-
-
-
-
-
-
-
-// getWheather()
-
-
-/*
-
-fetch(URL_with_city_name)
-.then(res => res.json())
-.then(data => {
-  var lat = data.whatever.the.docs.say.where.lat.is;
-  var lon = data.whatever.the.docs.say.where.lon.is;
-
-  //process data result for current weather  
-
-  fetch(URL_with_lat_and_lon)
-  .then(res => res.json())
-  .then(data => {
-       // process data results for multiple day forecast
-   })
-})
-
-*/
+http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=07bc796881be5c58857101bc6401fe30
