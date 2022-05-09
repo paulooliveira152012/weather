@@ -31,6 +31,7 @@ function convertCityName(cityName) {
         response.json()
         .then(function(data){
             getWheather(data[0].lat, data[0].lon)
+            fiveDaysFunction(data[0].lat, data[0].lon)
         })
     })
 }
@@ -44,6 +45,8 @@ var temp = document.querySelector("#temp");
 var hum = document.querySelector("#hum");
 var wind = document.querySelector("#wind")
 var uvi = document.querySelector("#uvi")
+
+
 
 //fetch cities
 var getWheather = function(lat, lon) {
@@ -60,79 +63,99 @@ var getWheather = function(lat, lon) {
             uvi.textContent = "uvi: " + data.current.uvi
         })
     })
+    
 }
 
 /* ----------------------------------------------------------- */
 
 /* ----------------------------------------------------------- */
 //REQUESTING 5 DAY FORECAST DATA
-function fiveDay(cityName) {
-    var apiUrl2 = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=07bc796881be5c58857101bc6401fe30`
+function fiveDaysFunction(lat, lon) {
+    var apiUrl2 = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=07bc796881be5c58857101bc6401fe30`
     //make a get request to url
     fetch(apiUrl2)
     .then(function(response) {
         response.json()
         .then(function(data){
             console.log(data)
-            temp.textContent = "Temp: " + data.current.temp
-            hum.textContent = "Humidity: " + data.current.humidity
-            wind.textContent = "Wind Speed: " + data.current.wind_speed
-            uvi.textContent = "uvi: " + data.current.uvi
+            // Trying to loop through the array
+            var list = data.list
+            for (let i = 0; i < 5; i++){
+            console.log(list[i])
+
+            var newDiv = document.createElement("div")
+            newDiv.style.height = "100px";
+            newDiv.style.width = "100px";
+            newDiv.style.backgroundColor = "lightBlue"
+            newDiv.style.margin = "5px"
+            cardsContainer.appendChild(newDiv)
+    }
+
+            //problem is that i'm not looking at the current value because it is future forcast
+            temp.textContent = "Temp: " + data.temp
+            hum.textContent = "Humidity: " + data.humidity
+            wind.textContent = "Wind Speed: " + data.wind
         })
     })
+    
+    // create, style add elements 
 }
 
-fiveDay()
+
+/* ----------------------------------------------------------- */
+// create a for loop for the next five days 
+    // dinamically create elements to append temp, humidity and wind speed
+    // append temp, humidity and wind speed
+    //iterate 5 times
+
 
 /* ----------------------------------------------------------- */
 
-/* ----------------------------------------------------------- */
 
+// // fiveDayForecast function which will populate bottom container
+// function fiveDayForecast() {
+// // create element
+// var el = document.createElement('div')
+// // add classes to element
+// el.classList.add('fiveDayContainers')
+// //add content to element ---->>>> UPDATE TO NEXT DAYS [0]
+// el.textContent = input.value
+// //add element to DOM
+// cardsContainer.appendChild(el)
 
-// fiveDayForecast function which will populate bottom container
-function fiveDayForecast() {
-// create element
-var el = document.createElement('div')
-// add classes to element
-el.classList.add('fiveDayContainers')
-//add content to element ---->>>> UPDATE TO NEXT DAYS [0]
-el.textContent = input.value
-//add element to DOM
-cardsContainer.appendChild(el)
+//     // create element
+//     var el = document.createElement('div')
+//     // add classes to element
+//     el.classList.add('fiveDayContainers')
+//     //add content to element UPDATE TO NEXT DAYS [1]
+//     el.textContent = input.value
+//     //add element to DOM
+//     cardsContainer.appendChild(el)
 
-    // create element
-    var el = document.createElement('div')
-    // add classes to element
-    el.classList.add('fiveDayContainers')
-    //add content to element UPDATE TO NEXT DAYS [1]
-    el.textContent = input.value
-    //add element to DOM
-    cardsContainer.appendChild(el)
+// // create element
+// var el = document.createElement('div')
+// // add classes to element
+// el.classList.add('fiveDayContainers')
+// //add content to element UPDATE TO NEXT DAYS [2]
+// el.textContent = input.value
+// //add element to DOM
+// cardsContainer.appendChild(el)
 
-// create element
-var el = document.createElement('div')
-// add classes to element
-el.classList.add('fiveDayContainers')
-//add content to element UPDATE TO NEXT DAYS [2]
-el.textContent = input.value
-//add element to DOM
-cardsContainer.appendChild(el)
+//     // create element
+//     var el = document.createElement('div')
+//     // add classes to element
+//     el.classList.add('fiveDayContainers')
+//     //add content to element UPDATE TO NEXT DAYS [3]
+//     el.textContent = input.value
+//     //add element to DOM
+//     cardsContainer.appendChild(el)
 
-    // create element
-    var el = document.createElement('div')
-    // add classes to element
-    el.classList.add('fiveDayContainers')
-    //add content to element UPDATE TO NEXT DAYS [3]
-    el.textContent = input.value
-    //add element to DOM
-    cardsContainer.appendChild(el)
-
-// create element
-var el = document.createElement('div')
-// add classes to element
-el.classList.add('fiveDayContainers')
-//add content to element UPDATE TO NEXT DAYS [4]
-el.textContent = input.value
-//add element to DOM
-cardsContainer.appendChild(el)
-}
+// // create element
+// var el = document.createElement('div')
+// // add classes to element
+// el.classList.add('fiveDayContainers')
+// //add content to element UPDATE TO NEXT DAYS [4]
+// el.textContent = input.value
+// //add element to DOM
+// cardsContainer.appendChild(el)
+// }
