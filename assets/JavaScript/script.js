@@ -35,6 +35,8 @@ function convertCityName(cityName) {
     })
 }
 /* ----------------------------------------------------------- */
+
+/* ----------------------------------------------------------- */
 // GETTING THE DATA FOR THAT CITY
 
 // creating variables referencing to the elements where information will be displayed
@@ -61,17 +63,30 @@ var getWheather = function(lat, lon) {
 }
 
 /* ----------------------------------------------------------- */
-// CONVERTING LAT AND LON VALUES TO NAME FOR 5 DAY CALL
 
+/* ----------------------------------------------------------- */
+//REQUESTING 5 DAY FORECAST DATA
+function fiveDay(cityName) {
+    var apiUrl2 = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=07bc796881be5c58857101bc6401fe30`
+    //make a get request to url
+    fetch(apiUrl2)
+    .then(function(response) {
+        response.json()
+        .then(function(data){
+            console.log(data)
+            temp.textContent = "Temp: " + data.current.temp
+            hum.textContent = "Humidity: " + data.current.humidity
+            wind.textContent = "Wind Speed: " + data.current.wind_speed
+            uvi.textContent = "uvi: " + data.current.uvi
+        })
+    })
+}
+
+fiveDay()
 
 /* ----------------------------------------------------------- */
 
 /* ----------------------------------------------------------- */
-// CONVERTING LAT AND LON VALUES TO NAME FOR 5 DAY CALL
-
-
-/* ----------------------------------------------------------- */
-
 
 
 // fiveDayForecast function which will populate bottom container
@@ -121,10 +136,3 @@ el.textContent = input.value
 //add element to DOM
 cardsContainer.appendChild(el)
 }
-
-
-http://api.openweathermap.org/geo/1.0/direct?q=newark&limit=1&appid=07bc796881be5c58857101bc6401fe30
-
-http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-
-http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=07bc796881be5c58857101bc6401fe30
