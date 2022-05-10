@@ -40,7 +40,7 @@ aside input {
 
 
 .container {
-    background-color: green;
+    /* background-color: green; */
     flex: 2;
 }
 

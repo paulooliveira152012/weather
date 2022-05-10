@@ -18,7 +18,7 @@ button.addEventListener("click", function(event){
         //populating h3 value
         title.innerHTML = input.value
         //call five day forcast to populate bottom container
-        fiveDayForecast()
+        // fiveDayForecast()
 })
 
 /* ----------------------------------------------------------- */
@@ -83,12 +83,25 @@ function fiveDaysFunction(lat, lon) {
             for (let i = 0; i < 5; i++){
             console.log(list[i])
 
+            //dinamically creating new divs for 5 day forcast
             var newDiv = document.createElement("div")
             newDiv.style.height = "100px";
             newDiv.style.width = "100px";
             newDiv.style.backgroundColor = "lightBlue"
             newDiv.style.margin = "5px"
+            //appending to cardsContainer
             cardsContainer.appendChild(newDiv)
+
+            // put data.temp, data.humidity and data.wind in variables 
+            var fiveAtDay = document.createElement("h5")
+            fiveAtDay.innerHTML="test"
+            newDiv.appendChild(fiveAtDay)
+            // console.log(fiveTemp)
+            // create new h5 elements to assign temp, humidity and wind values
+            // var newH5 = document.createElement("h5")
+            // append h5 elements to variable newDiv
+            
+            // newH5.textContent = 
     }
 
             //problem is that i'm not looking at the current value because it is future forcast
@@ -97,8 +110,11 @@ function fiveDaysFunction(lat, lon) {
             wind.textContent = "Wind Speed: " + data.wind
         })
     })
+
+    
     
     // create, style add elements 
+    
 }
 
 
