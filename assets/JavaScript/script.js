@@ -59,7 +59,7 @@ var getWheather = function (lat, lon) {
     .then(function (data) {
       console.log(data);
       // Trying to loop through the array
-      console.log(data.daily[0])
+      console.log(data.daily[1])
       date.textContent = moment().format("MMM Do YY");   
       temp.textContent = "Temperature: " + data.daily[0].temp.day+"F"
       hum.textContent = "Humidity: " + data.daily[0].humidity
@@ -90,6 +90,9 @@ var getWheather = function (lat, lon) {
         var cardWind = document.createElement('h5')
         cardWind.textContent = ("Wind " + data.daily[i].wind_speed)
         newDiv.appendChild(cardWind)
+        var cardDate = document.createElement('h5')
+        cardDate.textContent = ("Date ")
+        newDiv.appendChild(cardDate)
         
 
         //Between lines 99 and 104 I am trying to display the value under data.dt_text as the inner HTML content fot the h5 element I created
