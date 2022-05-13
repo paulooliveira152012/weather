@@ -126,8 +126,9 @@ function localStorage() {
 }
 
 //setting the citySearched to local storage
-  //persisting search history 
-  //empty out #fiveDay container after button is clicked before new content appear 
+//persisting search history 
+//empty out #fiveDay container after button is clicked before new content appear 
+//check if input value has something before searching for a city
 
     // emptying out five day forcast before new search
   function empty5day() {
@@ -136,4 +137,3 @@ function localStorage() {
     } 
   }
 
-  
