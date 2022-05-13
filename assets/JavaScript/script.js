@@ -10,6 +10,8 @@ var title = document.querySelector("#cityName");
 var fiveDay = document.querySelector("#fiveDay");
 //reference to cards container
 var cardsContainer = document.querySelector("#cardsContainer");
+//reference to search history
+var searchHistory = document.querySelector("#searchHistory")
 
 button.addEventListener("click", function (event) {
   event.preventDefault();
@@ -19,6 +21,7 @@ button.addEventListener("click", function (event) {
   title.innerHTML = input.value;
   //call five day forcast to populate bottom container
   // fiveDayForecast()
+  localStorage()
 });
 
 /* ----------------------------------------------------------- */
@@ -90,9 +93,15 @@ var getWheather = function (lat, lon) {
         var cardWind = document.createElement('h5')
         cardWind.textContent = ("Wind " + data.daily[i].wind_speed)
         newDiv.appendChild(cardWind)
+        
+        
+        var forecastDay = moment.unix(data.daily[i].dt).format("MMM DD YY");
+        console.log(forecastDay);
+
         var cardDate = document.createElement('h5')
-        cardDate.textContent = ("Date ")
+        cardDate.textContent = ("Date " + forecastDay)
         newDiv.appendChild(cardDate)
+        
         
 
         //Between lines 99 and 104 I am trying to display the value under data.dt_text as the inner HTML content fot the h5 element I created
@@ -112,6 +121,44 @@ var getWheather = function (lat, lon) {
 
 /* ----------------------------------------------------------- */
 console.log(moment().format());
+
+// append city history to ul id(#searchHistory)
+function localStorage() {
+    // create element as a variable
+    var citySearched = document.createElement("h5")
+    // setting text content euqal to search input value
+    citySearched.textContent=(input.value)
+    // appending to the searchHistory section
+    searchHistory.appendChild(citySearched)
+
+    //setting the citySearched to local storage
+        // localStorage.setItem('citySearched', 'test')
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ----------------------------------------------------------- */
 // create a for loop for the next five days
 // dinamically create elements to append temp, humidity and wind speed
