@@ -20,13 +20,15 @@ header h1 {
 
 main {
     display: flex;
-    height: 400px;
+    height: 100vh;
+    position: absolute;
 }
 
 aside {
     background-color: red;
-    flex: 1;
+    flex: 3;
     position: relative;
+    height: 100vh;
 }
 
 aside h2 {
@@ -78,4 +80,12 @@ aside input {
     height: 200px;
     background-color: blue;
     margin: 5px;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(to right, #3A6EC2, #240354);
+    position:absolute;
+    bottom: 0;
 }

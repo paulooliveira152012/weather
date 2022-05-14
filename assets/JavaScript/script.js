@@ -13,6 +13,7 @@ var cardsContainer = document.querySelector("#cardsContainer");
 //reference to search history
 var searchHistory = document.querySelector("#searchHistory");
 
+
 button.addEventListener("click", function (event) {
   event.preventDefault();
   convertCityName(input.value);
@@ -21,10 +22,12 @@ button.addEventListener("click", function (event) {
   title.innerHTML = input.value;
   //call five day forcast to populate bottom container
   // fiveDayForecast()
-  localStorage();
+  // localStorage();
+  window.localStorage.setItem('City', JSON.stringify())
   //clearing search bar
   input.value = " "
 });
+
 
 /* ----------------------------------------------------------- */
 // CONVERTING LAT AND LON VALUES TO NAME
@@ -115,15 +118,15 @@ var getWheather = function (lat, lon) {
 /* ----------------------------------------------------------- */
 console.log(moment().format());
 
-// append city history to ul id(#searchHistory)
-function localStorage() {
-  // create element as a variable
-  var citySearched = document.createElement("h5");
-  // setting text content euqal to search input value
-  citySearched.textContent = input.value;
-  // appending to the searchHistory section
-  searchHistory.appendChild(citySearched);  
-}
+// // append city history to ul id(#searchHistory)
+// function localStorage() {
+//   // create element as a variable
+//   var citySearched = document.createElement("h5");
+//   // setting text content euqal to search input value
+//   citySearched.textContent = input.value;
+//   // appending to the searchHistory section
+//   searchHistory.appendChild(citySearched);  
+// }
 
 //setting the citySearched to local storage
 //persisting search history 
@@ -137,3 +140,4 @@ function localStorage() {
     } 
   }
 
+  console.log(input.value)
