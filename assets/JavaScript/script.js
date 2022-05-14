@@ -140,4 +140,4 @@ console.log(moment().format());
     } 
   }
 
-  console.log(input.value)
+  
