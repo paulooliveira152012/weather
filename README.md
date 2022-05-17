@@ -13,20 +13,20 @@ Welcome to the Wheather Dashboard application! This application utilizesn HTML a
 * Paulo Oliveira
 
 # Links and preview
-![Finished and deployed website project]()
+![Finished and deployed website project](https://paulooliveira152012.github.io/weather/)
 
-![GitHub-repository]()
+![GitHub-repository](https://github.com/paulooliveira152012/weather)
 
 
 
 HTML Screen-shot
-![HTML ScreenShot]()
+![HTML ScreenShot](/assets/images/HTML.png)
 
 CSS Screen-shot
-![CSS ScreenShot]()
+![CSS ScreenShot](/assets/css/style.css)
 
 Website Screen-shot
-![WebsiteScreenshot]()
+![WebsiteScreenshot](/assets/images/webApplication.png)
 
 __________________________________________
 
