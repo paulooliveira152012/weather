@@ -23,7 +23,7 @@ HTML Screen-shot
 ![HTML ScreenShot](/assets/images/HTML.png)
 
 CSS Screen-shot
-![CSS ScreenShot](/assets/css/style.css)
+![CSS ScreenShot](/assets/images/CSS.png)
 
 Website Screen-shot
 ![WebsiteScreenshot](/assets/images/webApplication.png)
