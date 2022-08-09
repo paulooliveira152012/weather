@@ -24,7 +24,7 @@ header h1 {
 main {
     display: flex;
     height: 100vh;
-    position: absolute;
+    /* position: absolute; */
 }
 
 aside {
@@ -41,10 +41,11 @@ aside {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    flex: 1;
 }
 
 .searchArea input {
-    width: 90%;
+    width: 94%;
     height: 20px;
     padding: 5px;
     /* background-color: lightblue; */
@@ -52,7 +53,9 @@ aside {
 
 .container {
     /* background-color: green; */
-    flex: 2.5;
+    /* width: 80vw */
+    flex: 10;
+    
 }
 
 .top {
@@ -95,6 +98,6 @@ footer {
     width: 100%;
     height: 100px;
     background-image: linear-gradient(to right, #3A6EC2, #240354);
-    position:absolute;
+    
     bottom: 0;
 }
