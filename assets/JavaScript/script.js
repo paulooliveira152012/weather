@@ -118,15 +118,15 @@ var getWheather = function (lat, lon) {
 /* ----------------------------------------------------------- */
 console.log(moment().format());
 
-// // append city history to ul id(#searchHistory)
-// function localStorage() {
-//   // create element as a variable
-//   var citySearched = document.createElement("h5");
-//   // setting text content euqal to search input value
-//   citySearched.textContent = input.value;
-//   // appending to the searchHistory section
-//   searchHistory.appendChild(citySearched);  
-// }
+// append city history to ul id(#searchHistory)
+function localStorage() {
+  // create element as a variable
+  var citySearched = document.createElement("h5");
+  // setting text content euqal to search input value
+  citySearched.textContent = input.value;
+  // appending to the searchHistory section
+  searchHistory.appendChild(citySearched);  
+}
 
 //setting the citySearched to local storage
 //persisting search history 

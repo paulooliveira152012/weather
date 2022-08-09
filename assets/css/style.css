@@ -9,8 +9,11 @@ body {
 
 header {
     width: 100%;
-    height: 40px;
+    height: 60px;
     background-image: linear-gradient(to right, #3A6EC2, #240354);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 }
 
 header h1 {
@@ -25,21 +28,27 @@ main {
 }
 
 aside {
-    background-color: red;
-    flex: 3;
+    flex: 5;
     position: relative;
     height: 100vh;
+    /* background-color: lightblue; */
+    padding: 3px;
 }
 
-aside h2 {
-    margin: 10px;
+.searchArea {
+    height: 20vh;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-
-aside input {
+.searchArea input {
     width: 90%;
+    height: 20px;
+    padding: 5px;
+    /* background-color: lightblue; */
 }
-
 
 .container {
     /* background-color: green; */
