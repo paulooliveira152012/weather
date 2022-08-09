@@ -15,7 +15,7 @@ Welcome to the Wheather Dashboard application! This application utilizesn HTML a
 # Links and preview
 ![Finished and deployed website project](https://paulooliveira152012.github.io/weather/)
 
-![GitHub-repository](https://github.com/paulooliveira152012/weather)
+![GitHub-repository](https://paulooliveira152012.github.io/weather/)
 
 
 
