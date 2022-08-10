@@ -37,6 +37,7 @@ aside {
 
 .searchArea {
     height: 20vh;
+    padding-right: 10px;
     /* background-color: red; */
     display: flex;
     flex-direction: column;
@@ -45,17 +46,22 @@ aside {
 }
 
 .searchArea input {
-    width: 94%;
+    width: 100%;
     height: 20px;
-    padding: 5px;
+    /* padding: 5px; */
     /* background-color: lightblue; */
 }
+
+.btn {
+    width: 100%;
+    
+}
+
 
 .container {
     /* background-color: green; */
     /* width: 80vw */
-    flex: 10;
-    
+    flex: 10;   
 }
 
 .top {

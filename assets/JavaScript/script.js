@@ -13,21 +13,26 @@ var cardsContainer = document.querySelector("#cardsContainer");
 //reference to search history
 var searchHistory = document.querySelector("#searchHistory");
 
+//create a variable to store searched cities
+var cities = {}
 
+
+//when button is clicked *convertCityName function gets the user input value
 button.addEventListener("click", function (event) {
   event.preventDefault();
   convertCityName(input.value);
-  //check if city name result is ok, if so, populate h3 with city name
   //populating h3 value
   title.innerHTML = input.value;
-  //call five day forcast to populate bottom container
-  // fiveDayForecast()
-  // localStorage();
-  window.localStorage.setItem('City', JSON.stringify())
+  // call function to save to local storage
+  saveCities()
   //clearing search bar
   input.value = " "
 });
 
+//function to set to local storage
+var saveCities = function() {
+  localStorage.setItem(title.innerHTML, JSON.stringify())
+}
 
 /* ----------------------------------------------------------- */
 // CONVERTING LAT AND LON VALUES TO NAME
@@ -140,4 +145,5 @@ function localStorage() {
     } 
   }
 
+  
   
