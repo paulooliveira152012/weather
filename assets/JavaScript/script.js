@@ -29,20 +29,19 @@ button.addEventListener("click", function (event) {
   saveCities()
   //clearing search bar
   input.value = " "
-
-  let myCityName = JSON.stringify(city)
-  // localStorage.setItem("myCity", city)
 });
 
-//function to set to local storage
-// var saveCities = function() {
-//   localStorage.setItem(city, JSON.stringify())
-// }
+
 
 /* ----------------------------------------------------------- */
 // CONVERTING LAT AND LON VALUES TO NAME
 
 function convertCityName(cityName) {
+  //setting to local storage
+  // var cities = JSON.parse(localStorage.getItem('cities')) || [];
+  // cities.push(cityName)
+  // localStorage.setItem('cities', cities)
+
   var apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=07bc796881be5c58857101bc6401fe30`;
   fetch(apiUrl)
     .then(function (response) {
@@ -150,5 +149,7 @@ function localStorage() {
     } 
   }
 
-  
-  
+//function to set to local storage
+var saveCities = function() {
+  localStorage.setItem("city", JSON.stringify(cities))
+}
