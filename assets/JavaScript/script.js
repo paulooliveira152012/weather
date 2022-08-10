@@ -21,18 +21,23 @@ var cities = {}
 button.addEventListener("click", function (event) {
   event.preventDefault();
   convertCityName(input.value);
+  //storing input value to a variable
+  var city = input.value 
   //populating h3 value
-  title.innerHTML = input.value;
+  title.innerHTML = city;
   // call function to save to local storage
   saveCities()
   //clearing search bar
   input.value = " "
+
+  let myCityName = JSON.stringify(city)
+  // localStorage.setItem("myCity", city)
 });
 
 //function to set to local storage
-var saveCities = function() {
-  localStorage.setItem(title.innerHTML, JSON.stringify())
-}
+// var saveCities = function() {
+//   localStorage.setItem(city, JSON.stringify())
+// }
 
 /* ----------------------------------------------------------- */
 // CONVERTING LAT AND LON VALUES TO NAME
