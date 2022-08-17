@@ -14,19 +14,26 @@ var cardsContainer = document.querySelector("#cardsContainer");
 var searchHistory = document.querySelector("#searchHistory");
 
 //create a variable to store searched cities
-var cities = {}
+var cities = [];
 
 
 //when button is clicked *convertCityName function gets the user input value
 button.addEventListener("click", function (event) {
   event.preventDefault();
   convertCityName(input.value);
-  //storing input value to a variable
+
+  //storing input value to a variable (TITLE FOR SEARCHED CITY)
   var city = input.value 
   //populating h3 value
   title.innerHTML = city;
-  // call function to save to local storage
-  saveCities()
+
+  //send city names to cities array
+  cities.push({city: input.value});
+  //loop to store every city in local storage
+  for(var i = 0; i < cities.length; i++) {
+    localStorage.setItem(i, JSON.stringify(cities[i]));
+  }
+
   //clearing search bar
   input.value = " "
 });
@@ -127,15 +134,15 @@ var getWheather = function (lat, lon) {
 /* ----------------------------------------------------------- */
 console.log(moment().format());
 
-// append city history to ul id(#searchHistory)
-function localStorage() {
-  // create element as a variable
-  var citySearched = document.createElement("h5");
-  // setting text content euqal to search input value
-  citySearched.textContent = input.value;
-  // appending to the searchHistory section
-  searchHistory.appendChild(citySearched);  
-}
+// // append city history to ul id(#searchHistory)
+// function localStorage() {
+//   // create element as a variable
+//   var citySearched = document.createElement("h5");
+//   // setting text content euqal to search input value
+//   citySearched.textContent = input.value;
+//   // appending to the searchHistory section
+//   searchHistory.appendChild(citySearched);  
+// }
 
 //setting the citySearched to local storage
 //persisting search history 
@@ -149,7 +156,5 @@ function localStorage() {
     } 
   }
 
-//function to set to local storage
-var saveCities = function() {
-  localStorage.setItem("city", JSON.stringify(cities))
-}
+
+
