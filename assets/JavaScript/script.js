@@ -38,6 +38,8 @@ button.addEventListener("click", function (event) {
 
   //clearing search bar
   input.value = " "
+
+  getItems()
 });
 
 //Function to get items from local storage
@@ -53,12 +55,13 @@ function getItems() {
   }
 }
 
+
 //function to display info
 function display(city) {
   var cityList = document.createElement('div');
   cityList.classList.add('test');
 
-  var displayCityEl = document.createElement('h3');
+  var displayCityEl = document.createElement('a');
   displayCityEl.textContent = city;
   cityList.appendChild(displayCityEl)
 

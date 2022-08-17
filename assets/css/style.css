@@ -108,6 +108,10 @@ footer {
     bottom: 0;
 }
 
+.cities {
+    background-color: lightblue;
+}
+
 
 .test {
     background-color: transparent;
