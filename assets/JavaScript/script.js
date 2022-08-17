@@ -12,6 +12,8 @@ var fiveDay = document.querySelector("#fiveDay");
 var cardsContainer = document.querySelector("#cardsContainer");
 //reference to search history
 var searchHistory = document.querySelector("#searchHistory");
+//refence to area where searched cities will be displayed
+var searchedCityList = document.querySelector('#searchedCities')
 
 //create a variable to store searched cities
 var cities = [];
@@ -38,17 +40,36 @@ button.addEventListener("click", function (event) {
   input.value = " "
 });
 
+//Function to get items from local storage
+function getItems() {
+  for(var i = 0; i < localStorage.length; i++) {
+    if(localStorage.length > 0) {
+      var index = localStorage.key(i);
+      var value = JSON.parse(localStorage.getItem(index));
 
+      cities.push(value);
+      display(value.city)
+    }
+  }
+}
+
+//function to display info
+function display(city) {
+  var cityList = document.createElement('div');
+  cityList.classList.add('test');
+
+  var displayCityEl = document.createElement('h3');
+  displayCityEl.textContent = city;
+  cityList.appendChild(displayCityEl)
+
+  searchedCityList.appendChild(cityList)
+  
+}
 
 /* ----------------------------------------------------------- */
 // CONVERTING LAT AND LON VALUES TO NAME
 
 function convertCityName(cityName) {
-  //setting to local storage
-  // var cities = JSON.parse(localStorage.getItem('cities')) || [];
-  // cities.push(cityName)
-  // localStorage.setItem('cities', cities)
-
   var apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=07bc796881be5c58857101bc6401fe30`;
   fetch(apiUrl)
     .then(function (response) {
@@ -134,20 +155,6 @@ var getWheather = function (lat, lon) {
 /* ----------------------------------------------------------- */
 console.log(moment().format());
 
-// // append city history to ul id(#searchHistory)
-// function localStorage() {
-//   // create element as a variable
-//   var citySearched = document.createElement("h5");
-//   // setting text content euqal to search input value
-//   citySearched.textContent = input.value;
-//   // appending to the searchHistory section
-//   searchHistory.appendChild(citySearched);  
-// }
-
-//setting the citySearched to local storage
-//persisting search history 
-//empty out #fiveDay container after button is clicked before new content appear 
-//check if input value has something before searching for a city
 
     // emptying out five day forcast before new search
   function empty5day() {
@@ -158,3 +165,4 @@ console.log(moment().format());
 
 
 
+getItems()
