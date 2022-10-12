@@ -13,8 +13,9 @@
     <header>
       <h1>Weather Dashboard</h1>
     </header>
-    <main>
-      <aside>
+
+    <main class="container">
+      <aside class="col">
         <h2>Search for a City:</h2>
         <div class="input-group mb-3">
           <input
@@ -35,11 +36,11 @@
           </ul>
         </div>
       </aside>
-      <div class="container">
+      <div class="col">
         <!--current wheather information for searched city will be displayed here at the top-->
         <div class="top">
           <h3 id="cityName"></h3>
-          <img class="icon" src="" alt="" />
+          <img class="icon" id="icon" src="" alt="" />
           <h4 id="date"></h4>
           <!--not used yet-->
           <h5 id="temp"></h5>
@@ -50,7 +51,9 @@
         <!--5-Day Forcast displayed at the bottom div-->
         <div class="fiveDay" id="fiveDay">
           <h2>5-day Forcast:</h2>
-          <div class="cardsContainer" id="cardsContainer"></div>
+          <div class="cardsContainer" id="cardsContainer">
+            <!-- the next five days will appear here -->
+          </div>
         </div>
       </div>
     </main>
