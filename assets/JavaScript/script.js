@@ -1,17 +1,20 @@
 //apiKey = 07bc796881be5c58857101bc6401fe30
 
 //reference to html button element
-var button = document.querySelector("#searchBtn");
+const button = document.querySelector("#searchBtn");
 //reference to the search input
-var input = document.querySelector("#searchInput");
+const input = document.querySelector("#searchInput");
 //reference to the h3 at top container
-var title = document.querySelector("#cityName");
+const title = document.querySelector("#cityName");
 //reference to fiveDay container
-var fiveDay = document.querySelector("#fiveDay");
+const fiveDay = document.querySelector("#fiveDay");
 //reference to cards container
-var cardsContainer = document.querySelector("#cardsContainer");
+const cardsContainer = document.querySelector("#cardsContainer");
 //reference to search history
-var searchHistory = document.querySelector("#searchHistory");
+var historyEl = document.querySelector("#historyEl");
+//search history
+let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
+console.log(searchHistory)
 
 
 button.addEventListener("click", function (event) {
@@ -23,7 +26,11 @@ button.addEventListener("click", function (event) {
   //call five day forcast to populate bottom container
   // fiveDayForecast()
   // localStorage();
-  window.localStorage.setItem('City', JSON.stringify())
+  city = input.value
+  const searchTerm = input.value;
+  searchHistory.push(searchTerm)
+  // localStorage.setItem(city, JSON.stringify(input.value))
+  localStorage.setItem("search", JSON.stringify(searchHistory));
   //clearing search bar
   input.value = " "
 });
