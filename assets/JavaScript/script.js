@@ -43,11 +43,7 @@ function convertCityName(cityName) {
       getWheather(data[0].lat, data[0].lon);
     });
 }
-/* ----------------------------------------------------------- */
 
-/* ----------------------------------------------------------- */
-// GETTING THE DATA FOR THAT CITY
-// http://openweathermap.org/img/wn/10d@2x.png
 // creating variables referencing to the elements where information will be displayed
 var temp = document.querySelector("#temp");
 var hum = document.querySelector("#hum");
