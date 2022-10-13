@@ -14,11 +14,13 @@ const cardsContainer = document.querySelector("#cardsContainer");
 var historyEl = document.querySelector("#historyEl");
 //search history
 const searchHistory = [];
+//input value
+newSearch = input.value;
 
 
 button.addEventListener("click", function (event) {
   event.preventDefault();
-  console.log(input.value)
+  // console.log(input.value)
   convertCityName(input.value);
   title.innerHTML = input.value;
   // const city = input.value
@@ -30,10 +32,15 @@ button.addEventListener("click", function (event) {
   for(var i = 0; i < searchHistory.length; i++) {
     localStorage.setItem(i, JSON.stringify(searchHistory[i]));
   }
+
+  display(input.value)
+
   //clearing search bar
   input.value = " "
 });
 
+
+/* ----------------------------------------------------------- */
 
 /* ----------------------------------------------------------- */
 // CONVERTING LAT AND LON VALUES TO NAME
@@ -67,9 +74,9 @@ var getWheather = function (lat, lon) {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data);
+      
       // Trying to loop through the array
-      // console.log(data.daily[1]);
+  
       date.textContent = moment().format("MMM Do YY");
       temp.textContent = "Temperature: " + data.daily[0].temp.day + "F";
       hum.textContent = "Humidity: " + data.daily[0].humidity;
@@ -107,7 +114,7 @@ var getWheather = function (lat, lon) {
         newDiv.appendChild(cardWind);
 
         var forecastDay = moment.unix(data.daily[i].dt).format("MMM DD YY");
-        // console.log(forecastDay);
+        
 
         var cardDate = document.createElement("h5");
         cardDate.textContent = "Date " + forecastDay;
@@ -118,18 +125,18 @@ var getWheather = function (lat, lon) {
 /* ----------------------------------------------------------- */
 
 /* ----------------------------------------------------------- */
-// console.log(moment().format());
+
 
 // function to get the names from local storage
 function getCities(){
   for(var i = 0; i < localStorage.length; i++) {
-    if(localStorage > 0) {
+    if(localStorage.length > 0) {
       var index = localStorage.key(i);
       var value = JSON.parse(localStorage.getItem(index));
     }
 
     searchHistory.push(value);
-    display(value.name)
+    display(value.city)
   }
 }
 
