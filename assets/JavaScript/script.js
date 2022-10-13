@@ -13,24 +13,26 @@ const cardsContainer = document.querySelector("#cardsContainer");
 //reference to search history
 var historyEl = document.querySelector("#historyEl");
 //search history
-let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
-console.log(searchHistory)
+const searchHistory = [];
 
 
 button.addEventListener("click", function (event) {
   event.preventDefault();
   convertCityName(input.value);
-  //check if city name result is ok, if so, populate h3 with city name
-  //populating h3 value
   title.innerHTML = input.value;
-  //call five day forcast to populate bottom container
-  // fiveDayForecast()
-  // localStorage();
-  city = input.value
+  const city = input.value
+  // console.log(city)
   const searchTerm = input.value;
-  searchHistory.push(searchTerm)
+  searchHistory.push({city:city.value})
+  // console.log(searchHistory)
   // localStorage.setItem(city, JSON.stringify(input.value))
-  localStorage.setItem("search", JSON.stringify(searchHistory));
+  
+  for(var i = 0; i < searchHistory.length; i++) {
+    localStorage.setItem(i, JSON.stringify(searchHistory[i]));
+  }
+
+  //function to display cities 
+  display(cityName.value)
   //clearing search bar
   input.value = " "
 });
@@ -46,7 +48,7 @@ function convertCityName(cityName) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       getWheather(data[0].lat, data[0].lon);
     });
 }
@@ -68,9 +70,9 @@ var getWheather = function (lat, lon) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       // Trying to loop through the array
-      console.log(data.daily[1]);
+      // console.log(data.daily[1]);
       date.textContent = moment().format("MMM Do YY");
       temp.textContent = "Temperature: " + data.daily[0].temp.day + "F";
       hum.textContent = "Humidity: " + data.daily[0].humidity;
@@ -108,7 +110,7 @@ var getWheather = function (lat, lon) {
         newDiv.appendChild(cardWind);
 
         var forecastDay = moment.unix(data.daily[i].dt).format("MMM DD YY");
-        console.log(forecastDay);
+        // console.log(forecastDay);
 
         var cardDate = document.createElement("h5");
         cardDate.textContent = "Date " + forecastDay;
@@ -121,26 +123,9 @@ var getWheather = function (lat, lon) {
 /* ----------------------------------------------------------- */
 console.log(moment().format());
 
-// // append city history to ul id(#searchHistory)
-// function localStorage() {
-//   // create element as a variable
-//   var citySearched = document.createElement("h5");
-//   // setting text content euqal to search input value
-//   citySearched.textContent = input.value;
-//   // appending to the searchHistory section
-//   searchHistory.appendChild(citySearched);  
-// }
-
-//setting the citySearched to local storage
-//persisting search history 
-//empty out #fiveDay container after button is clicked before new content appear 
-//check if input value has something before searching for a city
-
-    // emptying out five day forcast before new search
-  function empty5day() {
-    if (fiveDay.innerHTML){
-      fiveDay.innerHTML = "";
-    } 
-  }
-
-  
+//function to display searched cities
+function display(city) {
+  var displayCityEl = document.createElement("li");
+  displayCityEl.textContent = city;
+  historyEl.appendChild(displayCityEl)
+}
