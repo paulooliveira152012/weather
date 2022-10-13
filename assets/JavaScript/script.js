@@ -21,7 +21,8 @@ const historyTitle = document.querySelector("#searchedCities");
 //clear button
 const clearBtn = document.querySelector("#clear-btn");
 //searched cities section
-const searchedSection = document.querySelector("#cities")
+const searchedSection = document.querySelector("#cities");
+
 
 
 button.addEventListener("click", function (event) {
@@ -47,6 +48,8 @@ button.addEventListener("click", function (event) {
 
   cardsContainer.innerHTML = "";
 });
+
+
 
 
 /* ----------------------------------------------------------- */
@@ -76,6 +79,7 @@ var date = document.querySelector("#date");
 
 //fetch cities
 var getWheather = function (lat, lon) {
+
   var apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=imperial&appid=07bc796881be5c58857101bc6401fe30`;
   //make a get request to url
   fetch(apiUrl)
@@ -95,14 +99,18 @@ var getWheather = function (lat, lon) {
         "src",
         ` http://openweathermap.org/img/wn/${data.daily[0].weather[0].icon}.png`
       );
+
       for (let i = 1; i < 6; i++) {
         //dinamically creating new divs for 5 day forcast
         var newDiv = document.createElement("div");
-        newDiv.style.height = "125px";
-        newDiv.style.width = "100px";
-        newDiv.style.backgroundColor = "lightBlue";
+        newDiv.style.height = "auto";
+        newDiv.style.width = "auto";
+        // newDiv.style.border = "solid lightGrey";
+        newDiv.style.borderRadius = "5px";
         newDiv.style.padding = "5px";
         newDiv.style.margin = "5px";
+        newDiv.style.backgroundColor = "#037CFF";
+        newDiv.style.color="white";
         newDiv.classList.add("container")
 
         //appending to cardsContainer
@@ -156,8 +164,11 @@ function getCities(){
 function display(city) {
   // console.log(city)
   var displayCityEl = document.createElement("li");
+  displayCityEl.style.listStyle="none";
+  displayCityEl.style.padding = "5px";
   displayCityEl.textContent = city;
-  historyEl.appendChild(displayCityEl)
+  displayCityEl.classList.add("list");
+  historyEl.appendChild(displayCityEl);
 }
 
 //clean search history
