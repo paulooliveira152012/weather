@@ -26,6 +26,10 @@ header h1 {
     display: none;
 }
 
+#clear-btn {
+    display: none;
+}
+
 .card {
     height: 150px;
     width: 20%;

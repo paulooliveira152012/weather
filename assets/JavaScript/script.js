@@ -18,6 +18,8 @@ const searchHistory = [];
 newSearch = input.value;
 //searched cities title
 const historyTitle = document.querySelector("#searchedCities");
+//clear button
+const clearBtn = document.querySelector("#clear-btn");
 
 
 button.addEventListener("click", function (event) {
@@ -41,6 +43,7 @@ button.addEventListener("click", function (event) {
   //clearing search bar
   input.value = " "
 
+  cardsContainer.innerHTML = "";
 });
 
 
@@ -157,6 +160,13 @@ function displayTitle() {
   if(historyTitle.style.display="none") {
     historyTitle.style.display="block"
   }
+  
+  //clean search history
+  clearBtn.addEventListener('click', function() {
+    historyEl.innerHTML = "";
+
+
+  })
 }
 
 
