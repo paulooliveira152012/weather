@@ -40,6 +40,7 @@ button.addEventListener("click", function (event) {
 
   //clearing search bar
   input.value = " "
+
 });
 
 
@@ -156,6 +157,17 @@ function displayTitle() {
   if(historyTitle.style.display="none") {
     historyTitle.style.display="block"
   }
+}
+
+
+//function to clean up previous search
+function cleanPreviousSearch() {
+  //the container is called cardsContainer
+  if(cardsContainer /* already contains cards in it */ ){
+    //clear cards container
+  }
+
+  //call this function on the button event listener
 }
 
 getCities()
