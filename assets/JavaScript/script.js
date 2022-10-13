@@ -20,6 +20,8 @@ newSearch = input.value;
 const historyTitle = document.querySelector("#searchedCities");
 //clear button
 const clearBtn = document.querySelector("#clear-btn");
+//searched cities section
+const searchedSection = document.querySelector("#cities")
 
 
 button.addEventListener("click", function (event) {
@@ -101,6 +103,8 @@ var getWheather = function (lat, lon) {
         newDiv.style.backgroundColor = "lightBlue";
         newDiv.style.padding = "5px";
         newDiv.style.margin = "5px";
+        newDiv.classList.add("container")
+
         //appending to cardsContainer
         cardsContainer.appendChild(newDiv);
         var cardImg = document.createElement("img");
@@ -156,34 +160,27 @@ function display(city) {
   historyEl.appendChild(displayCityEl)
 }
 
+//clean search history
+clearBtn.addEventListener('click', function() {
+    
+  historyEl.innerHTML = "";
+  localStorage.clear()
+  // if(historyTitle.style.display="block") {
+  //   clearBtn.style.display="none"
+  // }
+clearBtn.style.display="none";
+historyTitle.style.display="none";
+})
+
 function displayTitle() {
-  if(historyTitle.style.display="none") {
-    historyTitle.style.display="block"
-  }
-  
+  //displaying clear button
   if(historyTitle.style.display="none") {
     clearBtn.style.display="block"
   }
 
-  //clean search history
-  clearBtn.addEventListener('click', function() {
-    historyEl.innerHTML = "";
-    localStorage.clear()
-    if(historyTitle.style.display="block") {
-      clearBtn.style.display="none"
-    }
-  })
-}
-
-
-//function to clean up previous search
-function cleanPreviousSearch() {
-  //the container is called cardsContainer
-  if(cardsContainer /* already contains cards in it */ ){
-    //clear cards container
+  if (searchHistory != "") {
+    historyTitle.style.display="block"
   }
-
-  //call this function on the button event listener
 }
 
 getCities()
