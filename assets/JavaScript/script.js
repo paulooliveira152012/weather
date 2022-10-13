@@ -161,11 +161,17 @@ function displayTitle() {
     historyTitle.style.display="block"
   }
   
+  if(historyTitle.style.display="none") {
+    clearBtn.style.display="block"
+  }
+
   //clean search history
   clearBtn.addEventListener('click', function() {
     historyEl.innerHTML = "";
-
-
+    localStorage.clear()
+    if(historyTitle.style.display="block") {
+      clearBtn.style.display="none"
+    }
   })
 }
 
