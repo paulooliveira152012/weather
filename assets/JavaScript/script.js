@@ -10,7 +10,7 @@ const title = document.querySelector("#cityName");
 const fiveDay = document.querySelector("#fiveDay");
 //reference to cards container
 const cardsContainer = document.querySelector("#cardsContainer");
-//reference to search history
+//reference to save search history
 var historyEl = document.querySelector("#historyEl");
 //search history
 const searchHistory = [];
@@ -18,21 +18,18 @@ const searchHistory = [];
 
 button.addEventListener("click", function (event) {
   event.preventDefault();
+  console.log(input.value)
   convertCityName(input.value);
   title.innerHTML = input.value;
-  const city = input.value
+  // const city = input.value
   // console.log(city)
-  const searchTerm = input.value;
-  searchHistory.push({city:city.value})
+  searchHistory.push({city: input.value})
   // console.log(searchHistory)
   // localStorage.setItem(city, JSON.stringify(input.value))
   
   for(var i = 0; i < searchHistory.length; i++) {
     localStorage.setItem(i, JSON.stringify(searchHistory[i]));
   }
-
-  //function to display cities 
-  display(cityName.value)
   //clearing search bar
   input.value = " "
 });
@@ -121,11 +118,27 @@ var getWheather = function (lat, lon) {
 /* ----------------------------------------------------------- */
 
 /* ----------------------------------------------------------- */
-console.log(moment().format());
+// console.log(moment().format());
+
+// function to get the names from local storage
+function getCities(){
+  for(var i = 0; i < localStorage.length; i++) {
+    if(localStorage > 0) {
+      var index = localStorage.key(i);
+      var value = JSON.parse(localStorage.getItem(index));
+    }
+
+    searchHistory.push(value);
+    display(value.name)
+  }
+}
 
 //function to display searched cities
 function display(city) {
+  // console.log(city)
   var displayCityEl = document.createElement("li");
   displayCityEl.textContent = city;
   historyEl.appendChild(displayCityEl)
 }
+
+getCities()
