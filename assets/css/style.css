@@ -22,6 +22,10 @@ header h1 {
     display: flex;
 }
 
+#searchedCities {
+    display: none;
+}
+
 .card {
     height: 150px;
     width: 20%;

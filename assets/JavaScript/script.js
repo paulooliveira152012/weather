@@ -16,6 +16,8 @@ var historyEl = document.querySelector("#historyEl");
 const searchHistory = [];
 //input value
 newSearch = input.value;
+//searched cities title
+const historyTitle = document.querySelector("#searchedCities");
 
 
 button.addEventListener("click", function (event) {
@@ -33,7 +35,8 @@ button.addEventListener("click", function (event) {
     localStorage.setItem(i, JSON.stringify(searchHistory[i]));
   }
 
-  display(input.value)
+  display(input.value);
+  displayTitle()
 
   //clearing search bar
   input.value = " "
@@ -133,6 +136,7 @@ function getCities(){
     if(localStorage.length > 0) {
       var index = localStorage.key(i);
       var value = JSON.parse(localStorage.getItem(index));
+      displayTitle()
     }
 
     searchHistory.push(value);
@@ -146,6 +150,12 @@ function display(city) {
   var displayCityEl = document.createElement("li");
   displayCityEl.textContent = city;
   historyEl.appendChild(displayCityEl)
+}
+
+function displayTitle() {
+  if(historyTitle.style.display="none") {
+    historyTitle.style.display="block"
+  }
 }
 
 getCities()
