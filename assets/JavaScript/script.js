@@ -32,7 +32,7 @@ button.addEventListener("click", function (event) {
 
   
 
-  addTitle()
+  // addTitle()
 
   event.preventDefault();
   // console.log(input.value)
@@ -87,15 +87,17 @@ function convertCityName(cityName) {
       // console.log(data);
       getWheather(data[0].lat, data[0].lon);
       window.alert("city found!")
-      
+      topContainer.style.display= "block";
+      addTitle()
       // topContainer.style.display = "none";
       // titleBottom.style.display = "none";
     })
     .catch(error => {
+      window.alert("City not Found");
       topContainer.style.display = "none";
-      // titleBottom.innerHTML = "";
-      fiveDayTitle.innerHTML="";
-      // window.alert("City not Found");
+      titleBottom.display = "none";
+      fiveDay.display="none";
+      
       throw(error);
     });
 }
