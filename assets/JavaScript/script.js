@@ -22,10 +22,14 @@ const historyTitle = document.querySelector("#searchedCities");
 const clearBtn = document.querySelector("#clear-btn");
 //searched cities section
 const searchedSection = document.querySelector("#cities");
-
+//title section for h2 5 day forcast
+const titleBottom = document.querySelector("#title")
 
 
 button.addEventListener("click", function (event) {
+
+  addTitle()
+
   event.preventDefault();
   // console.log(input.value)
   convertCityName(input.value);
@@ -45,10 +49,19 @@ button.addEventListener("click", function (event) {
 
   //clearing search bar
   input.value = " "
-
+  //clearing cards
   cardsContainer.innerHTML = "";
+  //clearing 5 day title
+  fiveDayTitle.innerText = "";
 });
 
+//adding the h2 for 5day forecast
+function addTitle() {
+    const fiveDayTitle = document.createElement("h2");
+    fiveDayTitle.innerHTML = "5-day Forcast";
+    // fiveDay.appendChild(titleBottom);
+    fiveDay.appendChild(fiveDayTitle);
+}
 
 
 
