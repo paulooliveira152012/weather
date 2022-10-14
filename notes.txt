@@ -1,0 +1,5 @@
+* if city not found then do not display information container
+nor 5-day Forcast title.
+
+
+* Make searched history links to display weather
