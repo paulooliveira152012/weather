@@ -51,12 +51,12 @@ button.addEventListener("click", function (event) {
   input.value = " "
   //clearing cards
   cardsContainer.innerHTML = "";
-  //clearing 5 day title
-  fiveDayTitle.innerText = "";
 });
 
 //adding the h2 for 5day forecast
 function addTitle() {
+    //clean title section
+    fiveDay.innerHTML="";
     const fiveDayTitle = document.createElement("h2");
     fiveDayTitle.innerHTML = "5-day Forcast";
     // fiveDay.appendChild(titleBottom);
