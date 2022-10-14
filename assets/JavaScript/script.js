@@ -24,15 +24,20 @@ const clearBtn = document.querySelector("#clear-btn");
 const searchedSection = document.querySelector("#cities");
 //title section for h2 5 day forcast
 const titleBottom = document.querySelector("#title")
+//top container
+const topContainer = document.querySelector("#top")
 
 
 button.addEventListener("click", function (event) {
+
+  
 
   addTitle()
 
   event.preventDefault();
   // console.log(input.value)
   convertCityName(input.value);
+  
   title.innerHTML = input.value;
   // const city = input.value
   // console.log(city)
@@ -70,6 +75,8 @@ function addTitle() {
 /* ----------------------------------------------------------- */
 // CONVERTING LAT AND LON VALUES TO NAME
 
+
+
 function convertCityName(cityName) {
   var apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=07bc796881be5c58857101bc6401fe30`;
   fetch(apiUrl)
@@ -79,6 +86,13 @@ function convertCityName(cityName) {
     .then(function (data) {
       // console.log(data);
       getWheather(data[0].lat, data[0].lon);
+      window.alert("city found!")
+      // topContainer.style.display = "none";
+      // titleBottom.style.display = "none";
+    })
+    .catch(error => {
+      throw(error) && window.alert("City not Found");
+      
     });
 }
 
@@ -208,3 +222,5 @@ function displayTitle() {
 }
 
 getCities()
+
+
