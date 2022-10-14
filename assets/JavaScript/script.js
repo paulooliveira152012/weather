@@ -15,7 +15,7 @@ var historyEl = document.querySelector("#historyEl");
 //search history
 const searchHistory = [];
 //input value
-newSearch = input.value;
+const newSearch = input.value;
 //searched cities title
 const historyTitle = document.querySelector("#searchedCities");
 //clear button
@@ -29,11 +29,9 @@ const topContainer = document.querySelector("#top")
 
 
 button.addEventListener("click", function (event) {
-
-  
-  display();
   // addTitle()
 
+  
   event.preventDefault();
   // console.log(input.value)
   convertCityName(input.value);
@@ -190,7 +188,7 @@ function getCities(){
       displayTitle()
     }
 
-    searchHistory.push(value);
+    // searchHistory.push(value);
     display(value.city)
   }
 }
@@ -251,5 +249,3 @@ function displayTitle() {
 }
 
 getCities()
-
-
