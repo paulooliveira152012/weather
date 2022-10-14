@@ -31,7 +31,7 @@ const topContainer = document.querySelector("#top")
 button.addEventListener("click", function (event) {
 
   
-  renderSearchHistory();
+  display();
   // addTitle()
 
   event.preventDefault();
@@ -49,7 +49,7 @@ button.addEventListener("click", function (event) {
     localStorage.setItem(i, JSON.stringify(searchHistory[i]));
   }
 
-  renderSearchHistory(input.value);
+  display(input.value);
   displayTitle()
 
   //clearing search bar
@@ -191,42 +191,42 @@ function getCities(){
     }
 
     searchHistory.push(value);
-    renderSearchHistory(value.city)
+    display(value.city)
   }
 }
 
 //function to display searched cities
-// function display(city) {
-//   // console.log(city)
-//   var displayCityEl = document.createElement("li");
-//   displayCityEl.style.listStyle="none";
-//   displayCityEl.style.padding = "5px";
-//   displayCityEl.textContent = city;
-//   displayCityEl.classList.add("list");
-//   historyEl.appendChild(displayCityEl);
-// }
+function display(city) {
+  // console.log(city)
+  var displayCityEl = document.createElement("li");
+  displayCityEl.style.listStyle="none";
+  displayCityEl.style.padding = "5px";
+  displayCityEl.textContent = city;
+  displayCityEl.classList.add("list");
+  historyEl.appendChild(displayCityEl);
+}
 
 
 // -------------------------------------------------
-function renderSearchHistory() {
-  historyEl.innerHTML = "";
-  for(let i = 0; i < localStorage.length; i++) {
-    const historyItem = document.createElement("input")
-    historyItem.setAttribute("type", "text");
-    historyItem.setAttribute("readonly", true);
-    historyItem.setAttribute("class", "form-control d-block bg-white");
-    historyItem.setAttribute("value", searchHistory[i]);
-    historyItem.addEventListener("click", function () {
-      convertCityName(historyItem.value);
-            })
-            historyEl.append(historyItem);
-  }
-}
+// function renderSearchHistory() {
+//   historyEl.innerHTML = "";
+//   for(let i = 0; i < localStorage.length; i++) {
+//     const historyItem = document.createElement("input")
+//     historyItem.setAttribute("type", "text");
+//     historyItem.setAttribute("readonly", true);
+//     historyItem.setAttribute("class", "form-control d-block bg-white");
+//     historyItem.setAttribute("value", searchHistory[i]);
+//     historyItem.addEventListener("click", function () {
+//       convertCityName(historyItem.value);
+//             })
+//             historyEl.append(historyItem);
+//   }
+// }
 
-// renderSearchHistory();
-if (searchHistory.length > 0) {
-  convertCityName(searchHistory[searchHistory.length - 1]);
-}
+// // renderSearchHistory();
+// if (searchHistory.length > 0) {
+//   convertCityName(searchHistory[searchHistory.length - 1]);
+// }
 // -------------------------------------------------
 
 
