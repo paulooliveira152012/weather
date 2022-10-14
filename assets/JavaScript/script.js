@@ -86,17 +86,19 @@ function convertCityName(cityName) {
     .then(function (data) {
       // console.log(data);
       getWheather(data[0].lat, data[0].lon);
-      window.alert("city found!")
+      // window.alert("city found!")
       topContainer.style.display= "block";
       addTitle()
       // topContainer.style.display = "none";
       // titleBottom.style.display = "none";
     })
     .catch(error => {
-      window.alert("City not Found");
+      // window.alert("City not Found");
       topContainer.style.display = "none";
       titleBottom.display = "none";
-      fiveDay.display="none";
+      // fiveDay.display="none";
+      fiveDay.innerHTML="";
+      window.alert("City not Found");
       
       throw(error);
     });
