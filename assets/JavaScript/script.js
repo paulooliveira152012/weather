@@ -98,8 +98,6 @@ function convertCityName(cityName) {
       fiveDay.innerHTML="";
       window.alert("City not Found");
       throw(error);
-
-      
     });
 }
 
