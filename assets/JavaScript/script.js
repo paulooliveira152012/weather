@@ -125,7 +125,6 @@ function getCities(){
       var value = JSON.parse(localStorage.getItem(index));
       displayTitle()
     }
-
     // searchHistory.push(value);
     displayFromLocalStorage(value.city)
   }
