@@ -1,5 +1,9 @@
 * if city not found then do not display information container
-nor 5-day Forcast title.
+nor 5-day Forcast title. (DONE)
 
 
-* Make searched history links to display weather
+* Make searched history links to display weather (DONE)
+
+* if city not found, do not add to history
+
+* if input field is empty, do not add blank to history
