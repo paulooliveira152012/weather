@@ -1,47 +1,24 @@
 //apiKey = 07bc796881be5c58857101bc6401fe30
 
-//reference to html button element
 const button = document.querySelector("#searchBtn");
-//reference to the search input
 const input = document.querySelector("#searchInput");
-//reference to the h3 at top container
 const title = document.querySelector("#cityName");
-//reference to fiveDay container
 const fiveDay = document.querySelector("#fiveDay");
-//reference to cards container
 const cardsContainer = document.querySelector("#cardsContainer");
-//reference to save search history
 var historyEl = document.querySelector("#historyEl");
-//search history
 const searchHistory = [];
-//input value
 const newSearch = input.value;
-//searched cities title
 const historyTitle = document.querySelector("#searchedCities");
-//clear button
 const clearBtn = document.querySelector("#clear-btn");
-//searched cities section
 const searchedSection = document.querySelector("#cities");
-//title section for h2 5 day forcast
 const titleBottom = document.querySelector("#title")
-//top container
 const topContainer = document.querySelector("#top")
 
-
-button.addEventListener("click", function (event) {
-  // addTitle()
-
-  
+button.addEventListener("click", function (event) {  
   event.preventDefault();
-  // console.log(input.value)
   convertCityName(input.value);
-  
   title.innerHTML = input.value;
-  // const city = input.value
-  // console.log(city)
   searchHistory.push({city: input.value})
-  // console.log(searchHistory)
-  // localStorage.setItem(city, JSON.stringify(input.value))
   
   for(var i = 0; i < searchHistory.length; i++) {
     localStorage.setItem(i, JSON.stringify(searchHistory[i]));
@@ -49,20 +26,15 @@ button.addEventListener("click", function (event) {
 
   display(input.value);
   displayTitle()
-
-  //clearing search bar
   input.value = " "
-  //clearing cards
   cardsContainer.innerHTML = "";
 });
 
 //adding the h2 for 5day forecast
 function addTitle() {
-    //clean title section
     fiveDay.innerHTML="";
     const fiveDayTitle = document.createElement("h2");
     fiveDayTitle.innerHTML = "5-day Forcast";
-    // fiveDay.appendChild(titleBottom);
     fiveDay.appendChild(fiveDayTitle);
 }
 
@@ -202,6 +174,7 @@ function display(city) {
   displayCityEl.textContent = city;
   displayCityEl.classList.add("list");
   displayCityEl.addEventListener("click", function() {
+    cardsContainer.innerHTML = "";
     convertCityName(displayCityEl.innerText);
     title.innerHTML=displayCityEl.innerText;
   })
