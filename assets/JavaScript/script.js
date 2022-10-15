@@ -205,7 +205,6 @@ function display(city) {
   displayCityEl.textContent = city;
   displayCityEl.classList.add("list");
   displayCityEl.addEventListener("click", function() {
-    window.alert("hey")
     convertCityName(displayCityEl.innerText);
     title.innerHTML=displayCityEl.innerText;
   })
