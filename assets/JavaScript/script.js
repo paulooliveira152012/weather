@@ -15,27 +15,11 @@ const titleBottom = document.querySelector("#title")
 const topContainer = document.querySelector("#top")
 
 
-
 button.addEventListener("click", function (event) {  
   event.preventDefault();
-  //check validator (if empty and valid input)
-  //if empty or invalid, then console.log "invalid", else, proceed to convert city name
   if(input.value == "") {
     console.log("blank")
   } else {convertCityName(input.value)}
-
-  // convertCityName(input.value);
-        // title.innerHTML = input.value;
-        // searchHistory.push({city: input.value})
-  
-        // for(var i = 0; i < searchHistory.length; i++) {
-        //   localStorage.setItem(i, JSON.stringify(searchHistory[i]));
-        // }
-
-  // display(input.value);
-  // displayTitle()
-  // input.value = " "
-  // cardsContainer.innerHTML = "";
 });
 
 function convertCityName(cityName) {
@@ -46,13 +30,9 @@ function convertCityName(cityName) {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data);
       getWeather(data[0].lat, data[0].lon);
-      // window.alert("city found!")
       topContainer.style.display= "block";
       addTitle()
-      // topContainer.style.display = "none";
-      // titleBottom.style.display = "none";
       searchHistory.push({city: input.value})
       console.log(searchHistory)
       for(var i = 0; i < searchHistory.length; i++) {
@@ -61,36 +41,20 @@ function convertCityName(cityName) {
       displayFromLocalStorage();
     })
     .catch(error => {
-      // window.alert("City not Found");
       topContainer.style.display = "none";
       titleBottom.display = "none";
-      // fiveDay.display="none";
       fiveDay.innerHTML="";
       window.alert("City not Found");
       throw(error);
     });
 }
 
-
-
-
-//adding the h2 for 5day forecast
 function addTitle() {
     fiveDay.innerHTML="";
     const fiveDayTitle = document.createElement("h2");
     fiveDayTitle.innerHTML = "5-day Forcast";
     fiveDay.appendChild(fiveDayTitle);
 }
-
-
-
-/* ----------------------------------------------------------- */
-
-/* ----------------------------------------------------------- */
-// CONVERTING LAT AND LON VALUES TO NAME
-
-
-
 
 
 // creating variables referencing to the elements where information will be displayed
@@ -103,7 +67,6 @@ var date = document.querySelector("#date");
 
 //fetch cities
 var getWeather = function (lat, lon) {
-
   var apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=imperial&appid=07bc796881be5c58857101bc6401fe30`;
   //make a get request to url
   fetch(apiUrl)
@@ -111,9 +74,6 @@ var getWeather = function (lat, lon) {
       return response.json();
     })
     .then(function (data) {
-      
-      // Trying to loop through the array
-  
       date.textContent = moment().format("MMM Do YY");
       temp.textContent = "Temperature: " + data.daily[0].temp.day + "F";
       hum.textContent = "Humidity: " + data.daily[0].humidity;
@@ -125,19 +85,15 @@ var getWeather = function (lat, lon) {
       );
 
       for (let i = 1; i < 6; i++) {
-        //dinamically creating new divs for 5 day forcast
         var newDiv = document.createElement("div");
         newDiv.style.height = "auto";
         newDiv.style.width = "auto";
-        // newDiv.style.border = "solid lightGrey";
         newDiv.style.borderRadius = "5px";
         newDiv.style.padding = "5px";
         newDiv.style.margin = "5px";
         newDiv.style.backgroundColor = "#037CFF";
         newDiv.style.color="white";
         newDiv.classList.add("container")
-
-        //appending to cardsContainer
         cardsContainer.appendChild(newDiv);
         var cardImg = document.createElement("img");
         cardImg.setAttribute(
@@ -145,7 +101,6 @@ var getWeather = function (lat, lon) {
           ` http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}.png`
         );
         newDiv.appendChild(cardImg);
-
         var cardTemp = document.createElement("h5");
         cardTemp.textContent = "Temp: " + data.daily[i].temp.day;
         newDiv.appendChild(cardTemp);
@@ -155,21 +110,13 @@ var getWeather = function (lat, lon) {
         var cardWind = document.createElement("h5");
         cardWind.textContent = "Wind " + data.daily[i].wind_speed;
         newDiv.appendChild(cardWind);
-
         var forecastDay = moment.unix(data.daily[i].dt).format("MMM DD YY");
-        
-
         var cardDate = document.createElement("h5");
         cardDate.textContent = "Date " + forecastDay;
         newDiv.appendChild(cardDate);
       }
     });
 };
-/* ----------------------------------------------------------- */
-
-/* ----------------------------------------------------------- */
-
-
 // function to get the names from local storage
 function getCities(){
   for(var i = 0; i < localStorage.length; i++) {
@@ -180,41 +127,20 @@ function getCities(){
     }
 
     // searchHistory.push(value);
-    display(value.city)
+    displayFromLocalStorage(value.city)
   }
 }
-
-// //function to display searched cities
-// function display(city) {
-//   // console.log(city)
-//   var displayCityEl = document.createElement("li");
-//   displayCityEl.style.listStyle="none";
-//   displayCityEl.style.padding = "5px";
-//   displayCityEl.style.cursor = "pointer";
-//   displayCityEl.textContent = city;
-//   displayCityEl.classList.add("list");
-//   displayCityEl.addEventListener("click", function() {
-//     cardsContainer.innerHTML = "";
-//     convertCityName(displayCityEl.innerText);
-//     title.innerHTML=displayCityEl.innerText;
-//   })
-//   historyEl.appendChild(displayCityEl);
-// }
 
 function displayFromLocalStorage(city) {
   historyEl.innerHTML = "";
   cardsContainer.innerHTML = "";
-  for(let i = 0; i < localStorage.length; i++) {
+  for(let i = 0; i < localStorage.length; i++) { 
     var historyItem = document.createElement("li");
     historyItem.style.listStyle="none";
     historyItem.style.padding = "5px";
     historyItem.style.cursor = "pointer";
     historyItem.classList.add("list");
     historyItem.innerText = localStorage[i];
-    // historyItem.setAttribute("value", localStorage[i])
-    // historyItem.innerHTML = localStorage[i];
-    // console.log(historyItem)
-    // historyItem.textContent = city;
     historyEl.appendChild(historyItem)
   }
 }
@@ -239,4 +165,4 @@ function displayTitle() {
   }
 }
 
-// getCities()
+getCities()
