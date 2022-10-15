@@ -28,7 +28,7 @@ header h1 {
 }
 
 #searchedCities {
-    display: none;
+    /* display: none; */
 }
 
 #clear-btn {

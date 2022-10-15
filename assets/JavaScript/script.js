@@ -14,6 +14,8 @@ const searchedSection = document.querySelector("#cities");
 const titleBottom = document.querySelector("#title")
 const topContainer = document.querySelector("#top")
 
+
+
 button.addEventListener("click", function (event) {  
   event.preventDefault();
   //check validator (if empty and valid input)
