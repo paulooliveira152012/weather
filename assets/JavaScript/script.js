@@ -141,7 +141,7 @@ function displayFromLocalStorage(city) {
     historyItem.style.cursor = "pointer";
     historyItem.classList.add("list");
     historyItem.innerText = localStorage[i];
-    historyEl.appendChild(historyItem)
+    historyEl.appendChild(historyItem);
   }
 }
 
