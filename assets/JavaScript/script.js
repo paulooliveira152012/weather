@@ -141,6 +141,12 @@ function displayFromLocalStorage(city) {
     historyItem.style.cursor = "pointer";
     historyItem.classList.add("list");
     historyItem.innerText = localStorage[i];
+    historyItem.addEventListener("click", function() {
+      cardsContainer.innerHTML = "";
+      convertCityName(historyItem.innerText);
+      title.innerHTML=historyItem.innerText;
+    })
+
     historyEl.appendChild(historyItem);
   }
 }
