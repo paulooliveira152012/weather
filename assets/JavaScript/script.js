@@ -97,7 +97,6 @@ function convertCityName(cityName) {
       // fiveDay.display="none";
       fiveDay.innerHTML="";
       window.alert("City not Found");
-      
       throw(error);
 
       
@@ -190,7 +189,7 @@ function getCities(){
       displayTitle()
     }
 
-    // searchHistory.push(value);
+    searchHistory.push(value);
     display(value.city)
   }
 }
