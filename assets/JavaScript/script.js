@@ -83,7 +83,7 @@ function convertCityName(cityName) {
     })
     .then(function (data) {
       // console.log(data);
-      getWheather(data[0].lat, data[0].lon);
+      getWeather(data[0].lat, data[0].lon);
       // window.alert("city found!")
       topContainer.style.display= "block";
       addTitle()
@@ -110,7 +110,7 @@ var icon = document.querySelector(".icon");
 var date = document.querySelector("#date");
 
 //fetch cities
-var getWheather = function (lat, lon) {
+var getWeather = function (lat, lon) {
 
   var apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=imperial&appid=07bc796881be5c58857101bc6401fe30`;
   //make a get request to url
