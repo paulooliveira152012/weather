@@ -99,6 +99,8 @@ function convertCityName(cityName) {
       window.alert("City not Found");
       
       throw(error);
+
+      
     });
 }
 
@@ -209,30 +211,6 @@ function display(city) {
   })
   historyEl.appendChild(displayCityEl);
 }
-
-
-// -------------------------------------------------
-// function renderSearchHistory() {
-//   historyEl.innerHTML = "";
-//   for(let i = 0; i < localStorage.length; i++) {
-//     const historyItem = document.createElement("input")
-//     historyItem.setAttribute("type", "text");
-//     historyItem.setAttribute("readonly", true);
-//     historyItem.setAttribute("class", "form-control d-block bg-white");
-//     historyItem.setAttribute("value", searchHistory[i]);
-//     historyItem.addEventListener("click", function () {
-//       convertCityName(historyItem.value);
-//             })
-//             historyEl.append(historyItem);
-//   }
-// }
-
-// // renderSearchHistory();
-// if (searchHistory.length > 0) {
-//   convertCityName(searchHistory[searchHistory.length - 1]);
-// }
-// -------------------------------------------------
-
 
 
 //clean search history
