@@ -16,6 +16,12 @@ const topContainer = document.querySelector("#top")
 
 button.addEventListener("click", function (event) {  
   event.preventDefault();
+  console.log("click");
+
+  if(input == "") {
+    console.log("empty search")
+  } else {
+    
   convertCityName(input.value);
   title.innerHTML = input.value;
   searchHistory.push({city: input.value})
@@ -28,6 +34,7 @@ button.addEventListener("click", function (event) {
   displayTitle()
   input.value = " "
   cardsContainer.innerHTML = "";
+  }
 });
 
 //adding the h2 for 5day forecast
@@ -37,6 +44,8 @@ function addTitle() {
     fiveDayTitle.innerHTML = "5-day Forcast";
     fiveDay.appendChild(fiveDayTitle);
 }
+
+
 
 
 
