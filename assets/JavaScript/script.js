@@ -199,8 +199,14 @@ function display(city) {
   var displayCityEl = document.createElement("li");
   displayCityEl.style.listStyle="none";
   displayCityEl.style.padding = "5px";
+  displayCityEl.style.cursor = "pointer";
   displayCityEl.textContent = city;
   displayCityEl.classList.add("list");
+  displayCityEl.addEventListener("click", function() {
+    window.alert("hey")
+    convertCityName(displayCityEl.innerText);
+    title.innerHTML=displayCityEl.innerText;
+  })
   historyEl.appendChild(displayCityEl);
 }
 
