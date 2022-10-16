@@ -63,13 +63,14 @@ function addTitle() {
 
 
 function convertCityName(cityName) {
+
   var apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=07bc796881be5c58857101bc6401fe30`;
   fetch(apiUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data);
+        // console.log(data);
       getWeather(data[0].lat, data[0].lon);
       // window.alert("city found!")
       topContainer.style.display= "block";
