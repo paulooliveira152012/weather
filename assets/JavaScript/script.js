@@ -33,13 +33,16 @@ function convertCityName(cityName) {
       getWeather(data[0].lat, data[0].lon);
       topContainer.style.display= "block";
       addTitle()
-      searchHistory.push(input.value)
+      if(!searchHistory.includes(input.value)){
+       
+        searchHistory.push(input.value)
+      }
       console.log(searchHistory)
       for(var i = 0; i < searchHistory.length; i++) {
       // localStorage.setItem(i, JSON.stringify(searchHistory[i]));
       localStorage.setItem("city", JSON.stringify(searchHistory));
       }
-      displayFromLocalStorage();
+      newFunction();
     })
     .catch(error => {
       topContainer.style.display = "none";
@@ -118,38 +121,53 @@ var getWeather = function (lat, lon) {
       }
     });
 };
-// function to get the names from local storage
-function getCities(){
-  for(var i = 0; i < localStorage.length; i++) {
-    if(localStorage.length > 0) {
-      var index = localStorage.key(i);
-      var value = JSON.parse(localStorage.getItem(index));
-      displayTitle()
+// // function to get the names from local storage
+// function getCities(){
+//   for(var i = 0; i < localStorage.length; i++) {
+//     if(localStorage.length > 0) {
+//       var index = localStorage.key(i);
+//       var value = JSON.parse(localStorage.getItem(index));
+//       displayTitle()
+//     }
+//     // searchHistory.push(value);
+//     displayFromLocalStorage(value.city)
+//   }
+// }
+
+// function displayFromLocalStorage(city) {
+//   historyEl.innerHTML = "";
+//   cardsContainer.innerHTML = "";
+//   for(let i = 0; i < localStorage.length; i++) { 
+//     var historyItem = document.createElement("li");
+//     historyItem.style.listStyle="none";
+//     historyItem.style.padding = "5px";
+//     historyItem.style.cursor = "pointer";
+//     historyItem.classList.add("list");
+//     historyItem.innerText = localStorage[i];
+//     historyItem.addEventListener("click", function() {
+//       cardsContainer.innerHTML = "";
+//       convertCityName(historyItem.innerText);
+//       title.innerHTML=historyItem.innerText;
+//     })
+
+//     historyEl.appendChild(historyItem);
+//   }
+// }
+
+function newFunction() {
+  document.getElementById('historyEl').innerHTML= '';
+  var cities = JSON.parse(localStorage.getItem('city'));
+  if (cities.length){
+
+    for(var i = 0; i < cities.length; i++) {
+    document.getElementById('historyEl').innerHTML+=`
+    <li id=${i}>${cities[i]}</li
+    
+    `
     }
-    // searchHistory.push(value);
-    displayFromLocalStorage(value.city)
   }
 }
 
-function displayFromLocalStorage(city) {
-  historyEl.innerHTML = "";
-  cardsContainer.innerHTML = "";
-  for(let i = 0; i < localStorage.length; i++) { 
-    var historyItem = document.createElement("li");
-    historyItem.style.listStyle="none";
-    historyItem.style.padding = "5px";
-    historyItem.style.cursor = "pointer";
-    historyItem.classList.add("list");
-    historyItem.innerText = localStorage[i];
-    historyItem.addEventListener("click", function() {
-      cardsContainer.innerHTML = "";
-      convertCityName(historyItem.innerText);
-      title.innerHTML=historyItem.innerText;
-    })
-
-    historyEl.appendChild(historyItem);
-  }
-}
 
 
 //clean search history
@@ -171,4 +189,5 @@ function displayTitle() {
   }
 }
 
-getCities()
+// getCities()
+newFunction()
