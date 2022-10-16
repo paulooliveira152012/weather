@@ -33,11 +33,10 @@ function convertCityName(cityName) {
       getWeather(data[0].lat, data[0].lon);
       topContainer.style.display= "block";
       addTitle()
-      searchHistory.push(input.value)
+      searchHistory.push({city: input.value})
       console.log(searchHistory)
       for(var i = 0; i < searchHistory.length; i++) {
-      // localStorage.setItem(i, JSON.stringify(searchHistory[i]));
-      localStorage.setItem("city", JSON.stringify(searchHistory));
+      localStorage.setItem(i, JSON.stringify(searchHistory[i]));
       }
       displayFromLocalStorage();
     })
@@ -132,7 +131,7 @@ function getCities(){
 }
 
 function displayFromLocalStorage(city) {
-  historyEl.innerHTML = "";
+  // historyEl.innerHTML = "";
   cardsContainer.innerHTML = "";
   for(let i = 0; i < localStorage.length; i++) { 
     var historyItem = document.createElement("li");
