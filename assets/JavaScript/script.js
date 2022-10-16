@@ -16,11 +16,10 @@ const topContainer = document.querySelector("#top")
 
 button.addEventListener("click", function (event) {  
   event.preventDefault();
-  convertCityName(input.value);
-  title.innerHTML = input.value;
-  // #1 searched name goes to array
-  // if(input.value)
-  searchHistory.push({city: input.value})
+  if(input.value != "") {
+    convertCityName(input.value);
+    console.log("not blank");
+    searchHistory.push({city: input.value})
   console.log(searchHistory)
   
   for(var i = 0; i < searchHistory.length; i++) {
@@ -28,9 +27,22 @@ button.addEventListener("click", function (event) {
   }
 
   display(input.value);
-  displayTitle()
+  displayTitle(input.value)
   input.value = " "
   cardsContainer.innerHTML = "";
+  } else {
+    console.log("blank")
+  }
+  
+  // title.innerHTML = input.value;
+  // #1 searched name goes to array
+
+  // if(input.value == searchHistory[i]) {{
+  //   console.log("it already has")
+  // }} else {
+  //   console.log("name not found in local storage")
+  // }
+  
 });
 
 //adding the h2 for 5day forecast
@@ -75,6 +87,7 @@ function convertCityName(cityName) {
       throw(error);
     });
 }
+
 
 // creating variables referencing to the elements where information will be displayed
 var temp = document.querySelector("#temp");
