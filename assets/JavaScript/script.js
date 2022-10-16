@@ -33,10 +33,11 @@ function convertCityName(cityName) {
       getWeather(data[0].lat, data[0].lon);
       topContainer.style.display= "block";
       addTitle()
-      searchHistory.push({city: input.value})
+      searchHistory.push(input.value)
       console.log(searchHistory)
       for(var i = 0; i < searchHistory.length; i++) {
-      localStorage.setItem(i, JSON.stringify(searchHistory[i]));
+      // localStorage.setItem(i, JSON.stringify(searchHistory[i]));
+      localStorage.setItem("city", JSON.stringify(searchHistory));
       }
       displayFromLocalStorage();
     })
