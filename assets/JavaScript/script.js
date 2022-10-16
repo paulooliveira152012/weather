@@ -18,7 +18,10 @@ button.addEventListener("click", function (event) {
   event.preventDefault();
   convertCityName(input.value);
   title.innerHTML = input.value;
+  // #1 searched name goes to array
+  // if(input.value)
   searchHistory.push({city: input.value})
+  console.log(searchHistory)
   
   for(var i = 0; i < searchHistory.length; i++) {
     localStorage.setItem(i, JSON.stringify(searchHistory[i]));
