@@ -5,7 +5,7 @@ const input = document.querySelector("#searchInput");
 const title = document.querySelector("#cityName");
 const fiveDay = document.querySelector("#fiveDay");
 const cardsContainer = document.querySelector("#cardsContainer");
-var historyEl = document.querySelector("#historyEl");
+const historyEl = document.querySelector("#historyEl");
 const searchHistory = [];
 const newSearch = input.value;
 const historyTitle = document.querySelector("#searchedCities");
@@ -16,33 +16,15 @@ const topContainer = document.querySelector("#top")
 
 button.addEventListener("click", function (event) {  
   event.preventDefault();
+
   if(input.value != "") {
     convertCityName(input.value);
-    console.log("not blank");
-    searchHistory.push({city: input.value})
-  console.log(searchHistory)
-  
-  for(var i = 0; i < searchHistory.length; i++) {
-    localStorage.setItem(i, JSON.stringify(searchHistory[i]));
-  }
-
-  display(input.value);
-  displayTitle(input.value)
-  input.value = " "
+    
+  input.value = " ";
   cardsContainer.innerHTML = "";
   } else {
-    console.log("blank")
+    console.log("blank");
   }
-  
-  // title.innerHTML = input.value;
-  // #1 searched name goes to array
-
-  // if(input.value == searchHistory[i]) {{
-  //   console.log("it already has")
-  // }} else {
-  //   console.log("name not found in local storage")
-  // }
-  
 });
 
 //adding the h2 for 5day forecast
@@ -66,7 +48,9 @@ function convertCityName(cityName) {
   var apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=07bc796881be5c58857101bc6401fe30`;
   fetch(apiUrl)
     .then(function (response) {
+      console.log(response)
       return response.json();
+      
     })
     .then(function (data) {
       // console.log(data);
@@ -76,6 +60,7 @@ function convertCityName(cityName) {
       addTitle()
       // topContainer.style.display = "none";
       // titleBottom.style.display = "none";
+      searchHistory.push({city: input.value})
     })
     .catch(error => {
       // window.alert("City not Found");
@@ -86,6 +71,15 @@ function convertCityName(cityName) {
       window.alert("City not Found");
       throw(error);
     });
+
+    for(var i = 0; i < searchHistory.length; i++) {
+      localStorage.setItem(i, JSON.stringify(searchHistory[i]));
+    }
+
+    
+
+    display(input.value);
+    displayTitle(input.value)
 }
 
 
