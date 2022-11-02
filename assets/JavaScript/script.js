@@ -6,7 +6,7 @@ const title = document.querySelector("#cityName");
 const fiveDay = document.querySelector("#fiveDay");
 const cardsContainer = document.querySelector("#cardsContainer");
 const historyEl = document.querySelector("#historyEl");
-const searchHistory = [];
+let searchHistory = [];
 const newSearch = input.value;
 const historyTitle = document.querySelector("#searchedCities");
 const clearBtn = document.querySelector("#clear-btn");
@@ -17,10 +17,29 @@ const topContainer = document.querySelector("#top")
 button.addEventListener("click", function (event) {  
   event.preventDefault();
 
-  if(input.value != "") {
+  if(input.value != null) {
+    var flag = false;
+      if(searchHistory.length != 0) {
+        for(var i = 0; i < searchHistory.length; i++) {
+          if(cityName === searchHistory[i]) {
+            flag = true;
+          }
+        }
+      } 
+      if (!flag) {
+        searchHistory.push(input.value);
+        var btn = document.createElement('btn');
+        btn.textContent = input.value;
+        btn.addEventListener("click", function() {
+          convertCityName(btn.textContent)
+        })
+        historyEl.appendChild(btn);
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+
+      }
     convertCityName(input.value);
     
-  input.value = " ";
+  input.value = null
   cardsContainer.innerHTML = "";
   } else {
     console.log("blank");
@@ -58,9 +77,10 @@ function convertCityName(cityName) {
       // window.alert("city found!")
       topContainer.style.display= "block";
       addTitle()
+      title.textContent = cityName
       // topContainer.style.display = "none";
       // titleBottom.style.display = "none";
-      searchHistory.push({city: input.value})
+      
     })
     .catch(error => {
       // window.alert("City not Found");
@@ -72,13 +92,10 @@ function convertCityName(cityName) {
       throw(error);
     });
 
-    for(var i = 0; i < searchHistory.length; i++) {
-      localStorage.setItem(i, JSON.stringify(searchHistory[i]));
-    }
 
     
 
-    display(input.value);
+    // display(cityName);
     displayTitle(input.value)
 }
 
@@ -161,35 +178,40 @@ var getWeather = function (lat, lon) {
 
 
 // function to get the names from local storage
-function getCities(){
-  for(var i = 0; i < localStorage.length; i++) {
-    if(localStorage.length > 0) {
-      var index = localStorage.key(i);
-      var value = JSON.parse(localStorage.getItem(index));
-      displayTitle()
-    }
+// function getCities(){
+//   for(var i = 0; i < localStorage.length; i++) {
+//     if(localStorage.length > 0) {
+//       var index = localStorage.key(i);
+//       var value = JSON.parse(localStorage.getItem(index));
+//       displayTitle()
+//     }
 
-    searchHistory.push(value);
-    display(value.city)
-  }
-}
+//     searchHistory.push(value);
+//     display(value.city)
+//   }
+// }
 
 //function to display searched cities
-function display(city) {
-  // console.log(city)
-  var displayCityEl = document.createElement("li");
-  displayCityEl.style.listStyle="none";
-  displayCityEl.style.padding = "5px";
-  displayCityEl.style.cursor = "pointer";
-  displayCityEl.textContent = city;
-  displayCityEl.classList.add("list");
-  displayCityEl.addEventListener("click", function() {
-    cardsContainer.innerHTML = "";
-    convertCityName(displayCityEl.innerText);
-    title.innerHTML=displayCityEl.innerText;
-  })
-  historyEl.appendChild(displayCityEl);
-}
+// function display(city) {
+
+//   if (city != null && city != "") {
+
+//     // console.log(city)
+//     var displayCityEl = document.createElement("li");
+//     displayCityEl.style.listStyle="none";
+//     displayCityEl.style.padding = "5px";
+//     displayCityEl.style.cursor = "pointer";
+//     displayCityEl.textContent = city;
+//     displayCityEl.classList.add("list");
+//     displayCityEl.addEventListener("click", function() {
+//       cardsContainer.innerHTML = "";
+//       convertCityName(displayCityEl.innerText);
+//       title.innerHTML=displayCityEl.innerText;
+//     })
+//     historyEl.appendChild(displayCityEl);
+//   }
+// }
+
 
 
 //clean search history
@@ -211,4 +233,30 @@ function displayTitle() {
   }
 }
 
-getCities()
+function createButtons() {
+  var storedCities = JSON.parse(localStorage.getItem("searchHistory"));
+  console.log(storedCities)
+  if(storedCities != null) {
+    searchHistory = storedCities;
+  }
+
+  searchHistory.forEach(function(city) {
+    var btn = document.createElement('btn');
+        btn.textContent = city;
+        historyEl.appendChild(btn);
+        btn.addEventListener("click", function() {
+          convertCityName(btn.textContent)
+        })
+  })
+
+}
+
+function searchBtnAllow() {
+  searchHistory.forEach(function(city){
+    city.addEventListener("click", )
+  })
+}
+
+createButtons()
+
+// getCities()
