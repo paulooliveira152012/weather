@@ -16,7 +16,9 @@ const topContainer = document.querySelector("#top")
 const mainContent = document.querySelector("#mainContent");
 const main = document.querySelector("main")
 
-
+if(historyTitle != null) {
+  clearBtn.style.display="none"
+}
 
 button.addEventListener("click", function (event) {  
   event.preventDefault();
