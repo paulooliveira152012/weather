@@ -13,6 +13,9 @@ const clearBtn = document.querySelector("#clear-btn");
 const searchedSection = document.querySelector("#cities");
 const titleBottom = document.querySelector("#title")
 const topContainer = document.querySelector("#top")
+const mainContent = document.querySelector("#mainContent");
+
+
 
 button.addEventListener("click", function (event) {  
   event.preventDefault();
@@ -29,6 +32,7 @@ button.addEventListener("click", function (event) {
       if (!flag) {
         searchHistory.push(input.value);
         var btn = document.createElement('btn');
+        btn.classList.add("searchedCities")
         btn.textContent = input.value;
         btn.addEventListener("click", function() {
           convertCityName(btn.textContent)
@@ -64,6 +68,7 @@ function addTitle() {
 
 
 function convertCityName(cityName) {
+
   var apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=07bc796881be5c58857101bc6401fe30`;
   fetch(apiUrl)
     .then(function (response) {
@@ -214,12 +219,14 @@ var getWeather = function (lat, lon) {
 
 
 
-//clean search history
+
 clearBtn.addEventListener('click', function() {
   historyEl.innerHTML = "";
   localStorage.clear()
 clearBtn.style.display="none";
 historyTitle.style.display="none";
+//clean every
+mainContent.innerHTML = ""
 })
 
 function displayTitle() {
@@ -238,17 +245,26 @@ function createButtons() {
   console.log(storedCities)
   if(storedCities != null) {
     searchHistory = storedCities;
+    clearBtn.style.display="block"
+  } else {
+    clearBtn.style.display="none"
   }
 
   searchHistory.forEach(function(city) {
-    var btn = document.createElement('btn');
+    var btn = document.createElement('button');
         btn.textContent = city;
+        btn.classList.add("searchedCities");
+        // btn.style.display= "block";
+        // btn.style.cursor="pointer";
+        // btn.style.color = "gray";
+        // btn.style.backgroundColor = "lightBlue"
+        // btn.style.marginTop = "10px"
         historyEl.appendChild(btn);
-        btn.addEventListener("click", function() {
+        btn.addEventListener("click", function() {      
+          cardsContainer.innerHTML="";
           convertCityName(btn.textContent)
         })
   })
-
 }
 
 function searchBtnAllow() {
