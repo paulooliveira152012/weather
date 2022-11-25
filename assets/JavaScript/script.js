@@ -24,7 +24,7 @@ button.addEventListener("click", function (event) {
     var flag = false;
       if(searchHistory.length != 0) {
         for(var i = 0; i < searchHistory.length; i++) {
-          if(cityName === searchHistory[i]) {
+          if(input.value === searchHistory[i]) {
             flag = true;
           }
         }
