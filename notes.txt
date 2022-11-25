@@ -7,3 +7,10 @@ nor 5-day Forcast title. (DONE)
 * if city not found, do not add to history
 
 * if input field is empty, do not add blank to history
+
+
+
+
+Computer responsive
+
+width: 990

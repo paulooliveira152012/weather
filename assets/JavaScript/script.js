@@ -14,6 +14,13 @@ const searchedSection = document.querySelector("#cities");
 const titleBottom = document.querySelector("#title")
 const topContainer = document.querySelector("#top")
 const mainContent = document.querySelector("#mainContent");
+const main = document.querySelector("main")
+
+
+
+if(window.innerWidth < 900) {
+  main.classList.add("container");
+}
 
 button.addEventListener("click", function (event) {  
   event.preventDefault();
@@ -56,14 +63,6 @@ function addTitle() {
 }
 
 
-
-/* ----------------------------------------------------------- */
-
-/* ----------------------------------------------------------- */
-// CONVERTING LAT AND LON VALUES TO NAME
-
-
-
 function convertCityName(cityName) {
 
   var apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=07bc796881be5c58857101bc6401fe30`;
@@ -79,10 +78,7 @@ function convertCityName(cityName) {
       // window.alert("city found!")
       topContainer.style.display= "block";
       addTitle()
-      title.textContent = cityName
-      // topContainer.style.display = "none";
-      // titleBottom.style.display = "none";
-      
+      title.textContent = cityName      
     })
     .catch(error => {
       // window.alert("City not Found");
@@ -93,10 +89,6 @@ function convertCityName(cityName) {
       window.alert("City not Found");
       throw(error);
     });
-
-
-    
-
     // display(cityName);
     displayTitle(input.value)
 }
@@ -174,48 +166,6 @@ var getWeather = function (lat, lon) {
       }
     });
 };
-/* ----------------------------------------------------------- */
-
-/* ----------------------------------------------------------- */
-
-
-// function to get the names from local storage
-// function getCities(){
-//   for(var i = 0; i < localStorage.length; i++) {
-//     if(localStorage.length > 0) {
-//       var index = localStorage.key(i);
-//       var value = JSON.parse(localStorage.getItem(index));
-//       displayTitle()
-//     }
-
-//     searchHistory.push(value);
-//     display(value.city)
-//   }
-// }
-
-//function to display searched cities
-// function display(city) {
-
-//   if (city != null && city != "") {
-
-//     // console.log(city)
-//     var displayCityEl = document.createElement("li");
-//     displayCityEl.style.listStyle="none";
-//     displayCityEl.style.padding = "5px";
-//     displayCityEl.style.cursor = "pointer";
-//     displayCityEl.textContent = city;
-//     displayCityEl.classList.add("list");
-//     displayCityEl.addEventListener("click", function() {
-//       cardsContainer.innerHTML = "";
-//       convertCityName(displayCityEl.innerText);
-//       title.innerHTML=displayCityEl.innerText;
-//     })
-//     historyEl.appendChild(displayCityEl);
-//   }
-// }
-
-
-
 
 clearBtn.addEventListener('click', function() {
   historyEl.innerHTML = "";
@@ -253,11 +203,6 @@ function createButtons() {
     var btn = document.createElement('button');
         btn.textContent = city;
         btn.classList.add("searchedCities");
-        // btn.style.display= "block";
-        // btn.style.cursor="pointer";
-        // btn.style.color = "gray";
-        // btn.style.backgroundColor = "lightBlue"
-        // btn.style.marginTop = "10px"
         historyEl.appendChild(btn);
         btn.addEventListener("click", function() {      
           cardsContainer.innerHTML="";
@@ -273,5 +218,3 @@ function searchBtnAllow() {
 }
 
 createButtons()
-
-// getCities()
