@@ -29,7 +29,7 @@ button.addEventListener("click", function (event) {
             flag = true;
           }
         }
-      } 
+      }
       if (!flag) {
         searchHistory.push(input.value);
         var btn = document.createElement('btn');
