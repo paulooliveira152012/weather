@@ -32,9 +32,9 @@ header h1 {
     display: none;
 }
 
-/* #clear-btn {
-    display: none;
-} */
+#clear-btn {
+    margin-bottom: 20px;
+}
 
 .card {
     height: 150px;
