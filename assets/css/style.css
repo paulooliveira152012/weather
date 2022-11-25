@@ -105,7 +105,7 @@ footer {
 }
 
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1029px) {
 
     main {
         width: 100%;
@@ -117,11 +117,18 @@ footer {
     aside {
         
         /* background-color: red; */
+        flex: 1;
         margin: 20px;
     }
 
     #mainContent {
         /* background-color: blue; */
         margin: 20px;
+        flex: 3;
+    }
+
+    #cardsContainer {
+        display: flex;
+        justify-content: space-between;
     }
 }
