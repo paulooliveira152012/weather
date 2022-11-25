@@ -18,10 +18,6 @@ const main = document.querySelector("main")
 
 
 
-if(window.innerWidth < 900) {
-  main.classList.add("container");
-}
-
 button.addEventListener("click", function (event) {  
   event.preventDefault();
 
