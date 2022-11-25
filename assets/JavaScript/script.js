@@ -15,8 +15,6 @@ const titleBottom = document.querySelector("#title")
 const topContainer = document.querySelector("#top")
 const mainContent = document.querySelector("#mainContent");
 
-
-
 button.addEventListener("click", function (event) {  
   event.preventDefault();
 
@@ -39,7 +37,6 @@ button.addEventListener("click", function (event) {
         })
         historyEl.appendChild(btn);
         localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-
       }
     convertCityName(input.value);
     
@@ -226,7 +223,7 @@ clearBtn.addEventListener('click', function() {
 clearBtn.style.display="none";
 historyTitle.style.display="none";
 //clean every
-mainContent.innerHTML = ""
+mainContent.innerHTML = "";
 })
 
 function displayTitle() {
@@ -242,6 +239,8 @@ function displayTitle() {
 
 function createButtons() {
   var storedCities = JSON.parse(localStorage.getItem("searchHistory"));
+  //sort list
+  storedCities.sort()
   console.log(storedCities)
   if(storedCities != null) {
     searchHistory = storedCities;
